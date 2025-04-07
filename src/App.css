@@ -1,0 +1,169 @@
+
+
+
+/* .time-config {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin-top: 20rem;
+}
+
+.time-config div {
+  margin-bottom: 1rem;
+}
+
+.time-config label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.time-config input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.time-config button {
+  width: 100%;
+  background-color: #4a90e2;
+ 
+}
+
+.time-config button:hover {
+  background-color: #3a7bc8;
+}
+
+.time-config button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  
+} */
+
+audio {
+  display: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Mortal Kombat 5', sans-serif;
+ 
+
+  background-image: url('../mortal-kombat-11-sub-zero-vs-scorpion-i2m14tv5pl07k0qu.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.titulo  {
+ 
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #f6c945, #c4410b, #8b0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* text-shadow:
+    1px 1px 0 #000,
+    2px 2px 0 #300000; */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+
+.time-config {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* border: 3px solid #ffcc00; */
+  /* border-radius: 15px; */
+  padding: 30px;
+  text-align: center;
+  width: fit-content;
+  margin: 40px auto;
+  /* color: #fff; */
+  /* box-shadow: 0 0 15px #ffcc00; */
+  /* font-family: 'Mortal Kombat Font', sans-serif; */
+}
+
+.time-config h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  /* color: #ffcc00;
+  text-shadow: 2px 2px 6px black; */
+}
+
+.editable-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  margin-bottom: 20px;
+
+}
+
+.editable-time input {
+  width: 70px;
+  font-size: 48px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #ffcc00;
+  color: #fff;
+  text-align: center;
+  outline: none;
+  font-family: 'Mortal Kombat 3', sans-serif;
+}
+
+.editable-time span {
+  font-size: 48px;
+  margin: 0 10px;
+  color: #ffcc00;
+}
+
+.start-button {
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px #cc9900;
+}
+
+.start-button:hover {
+  background-color: #ffd633;
+}
+
+.icon-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.icon-button {
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.icon-button:hover {
+  transform: scale(1.1);
+}
