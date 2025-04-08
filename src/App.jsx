@@ -3,8 +3,8 @@ import './App.css'
 
 
 function App() {
-  const [workTime, setWorkTime] = useState(1)
-  const [breakTime, setBreakTime] = useState(5)
+  const [workTime, setWorkTime] = useState(25)
+  const [breakTime, setBreakTime] = useState(1)
 
   const [timeLeft, setTimeLeft] = useState(workTime * 60)
   const [isActive, setIsActive] = useState(false)
@@ -16,18 +16,22 @@ function App() {
 
   const startAudioRef = useRef(null)
   const alarmAudioRef = useRef(null)
+  const wellDone = useRef(null)
+  const finishHimRef = useRef(null)
   const hasPlayedStartSound = useRef(false)
 
   useEffect(() => {
     startAudioRef.current?.load()
-    alarmAudioRef.current?.load()
+    // alarmAudioRef.current?.load()
+    wellDone.current?.load()
+    finishHimRef.current?.load()
   }, [])
 
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60).toString().padStart(2, '0')
-    const secs = (seconds % 60).toString().padStart(2, '0')
-    return `${mins}:${secs}`
-  }
+  // const formatTime = (seconds) => {
+  //   const mins = Math.floor(seconds / 60).toString().padStart(2, '0')
+  //   const secs = (seconds % 60).toString().padStart(2, '0')
+  //   return `${mins}:${secs}`
+  // }
 
   useEffect(() => {
     let interval = null
@@ -49,7 +53,12 @@ function App() {
     if (timeLeft === 0 && isActive) {
       if (alarmAudioRef.current) {
         alarmAudioRef.current.currentTime = 0
-        alarmAudioRef.current.play().catch(e => console.log("Erro ao tocar alarme:", e))
+        finishHimRef.current.currentTime = 0
+        // setTimeout(() => {
+        //   alarmAudioRef.current.play().catch(e => console.log("Erro ao tocar alarme:", e))
+        // }, 3000)
+        finishHimRef.current.play().catch(e => console.log("Erro ao tocar finish him:", e))
+        
       }
 
       if (sessionType === 'Pomodoro') {
@@ -57,7 +66,8 @@ function App() {
         setTimeLeft(breakTime * 60)
       } else {
         setSessionType('Pomodoro')
-        setTimeLeft(workTime * 60)
+        // setTimeLeft(workTime * 60)
+        resetTimer()
       }
     }
 
@@ -79,14 +89,14 @@ function App() {
     }
   }
 
-  const updateTimes = () => {
-    resetTimer()
-    if (sessionType === 'Pomodoro') {
-      setTimeLeft(workTime * 60)
-    } else {
-      setTimeLeft(breakTime * 60)
-    }
-  }
+  // const updateTimes = () => {
+  //   resetTimer()
+  //   if (sessionType === 'Pomodoro') {
+  //     setTimeLeft(workTime * 60)
+  //   } else {
+  //     setTimeLeft(breakTime * 60)
+  //   }
+  // }
 
   useEffect(() => {
     if (!isActive) {
@@ -101,11 +111,17 @@ function App() {
     <div className="app">
       <audio ref={startAudioRef} src="/audio/round1.mp3" preload="auto" />
       <audio ref={alarmAudioRef} src="/audio/fatality.mp3" preload="auto" />
+      <audio ref={finishHimRef} src="/audio/finish.mp3" preload="auto" />
+
+      
+      <img height="90" className="clip" src="/public/logoMK.gif" alt="Logo" />
+      <img height="90" className="clip" src="/public/logoMK.gif" alt="Logo" />
+      <img height="90" className="clip" src="/public/logoMK.gif" alt="Logo" />
 
       <div className="time-config">
         <div className="editable-time">
           <input
-            type="text"
+            type="number"
             value={String(Math.floor(timeLeft / 60)).padStart(2, '0')}
             onChange={(e) => {
               let raw = e.target.value.replace(/\D/g, '')
@@ -118,7 +134,7 @@ function App() {
           />
           <span>:</span>
           <input
-            type="text"
+            type="number"
             value={String(timeLeft % 60).padStart(2, '0')}
             onChange={(e) => {
               let raw = e.target.value.replace(/\D/g, '')
